@@ -1,6 +1,11 @@
 from fastapi import FastAPI
 
 from tech.model import model_predict
+from dotenv import load_dotenv
+
+load_dotenv()
+
+import os
 
 app = FastAPI()
 
@@ -15,4 +20,4 @@ def predictor(st : str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="debug")
+    uvicorn.run(app, host=os.getenv("HOST", "0.0.0.0"), port=int(os.getenv("PORT", 8080)), log_level="debug")
