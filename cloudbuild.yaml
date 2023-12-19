@@ -7,19 +7,19 @@ steps:
         "-f",
         "Dockerfile",
         "-t",
-        "europe-west1-docker.pkg.dev/hadji-ml-api/hadji-api/hadji:$TAG_NAME",
+        "northamerica-northeast1-docker.pkg.dev/hadji-ml-api/hadji-api/hadji:$TAG_NAME",
         "-t",
-        "europe-west1-docker.pkg.dev/hadji-ml-api/hadji-api/hadji:latest",
+        "northamerica-northeast1-docker.pkg.dev/hadji-ml-api/hadji-api/hadji:latest",
         ".",
         "--cache-from",
-        "europe-west1-docker.pkg.dev/hadji-ml-api/hadji-api/hadji:latest",
+        "northamerica-northeast1-docker.pkg.dev/hadji-ml-api/hadji-api/hadji:latest",
       ]
     # push the container image
   - name: "gcr.io/cloud-builders/docker"
     args:
       [
         "push",
-        "europe-west1-docker.pkg.dev/hadji-ml-api/hadji-api/hadji:latest",
+        "northamerica-northeast1-docker.pkg.dev/hadji-ml-api/hadji-api/hadji:latest",
       ]
     # deploy to Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
@@ -29,9 +29,9 @@ steps:
         "deploy",
         "hadji-ml-api",
         "--image",
-        "europe-west1-docker.pkg.dev/hadji-ml-api/hadji-api/hadji:$TAG_NAME",
+        "northamerica-northeast1-docker.pkg.dev/hadji-ml-api/hadji-api/hadji:$TAG_NAME",
         "--region",
-        "europe-west1",
+        "northamerica-northeast1",
         "--platform",
         "managed",
         "--allow-unauthenticated",
